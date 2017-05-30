@@ -1,0 +1,28 @@
+<h1>Heroes <small>Searching: "{{term}}"</small></h1>
+<hr>
+
+<div class="row animated fadeIn fast" *ngIf="searchResult.length == 0">
+  <div class="col-md-12">
+    <div class="alert alert-info" role="alert">
+      No results for: "{{term}}", please try again!
+    </div>
+  </div>
+</div>
+
+
+<div class="card-columns" *ngIf="searchResult.length > 0">
+
+  <div class="card animated fadeIn" *ngFor="let heroe of searchResult;">
+    <!--[src] asi le digo al renderizado que lo manejara angular  -->
+    <img class="card-img-top img-fluid" [src]="heroe.img" [alt]="heroe.img">
+    <div class="card-block">
+      <h4 class="card-title">{{heroe.nombre}}</h4>
+      <p class="card-text">{{heroe.bio}}</p>
+      <p class="card-text"><small class="text-muted">{{heroe.aparicion}}</small></p>
+
+      <button (click)="showHero(heroe.nombre)" type="button" class="btn btn-outline-primary btn-block" >View more</button>
+      <!-- <a [routerLink]="['/heroe',i]" class="btn btn-outline-primary">View more with link</a> -->
+
+    </div>
+  </div>
+</div>
